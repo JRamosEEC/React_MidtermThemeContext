@@ -1,3 +1,4 @@
+import React from 'react';
 import Elgato from './../assets/ElGato_transparent.webp'
 
 const HomePage = () => {

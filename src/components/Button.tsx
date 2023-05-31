@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Button = ({ label, onClick, style }) => {
   return (
     <div id="btn" style={{backgroundColor: style}} className="btn btn-primary" onClick={onClick}>

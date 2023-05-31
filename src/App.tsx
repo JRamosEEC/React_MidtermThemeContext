@@ -1,13 +1,18 @@
+import React from 'react';
 import { useEffect, useContext, useState } from 'react';
 import NavBar from './components/NavBar';
 import { Outlet } from "react-router-dom";
-import background from './assets/background.png'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { ThemeContext } from './ThemeContext';
+import { themeType } from './components/Classes/Theme'
 
 function App() {
-  const {theme, setThemeColor} = useContext(ThemeContext)
+  interface themeI {
+    theme: themeType;
+  }
+
+  const { theme, setThemeColor }: {theme: themeType, setThemeColor: (themeVal: number) => void} = useContext(ThemeContext)
 
   useEffect(() => {
     document.body.style.background = theme.background;

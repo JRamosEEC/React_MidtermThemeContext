@@ -1,9 +1,17 @@
+import React from 'react';
 import { useOutletContext } from "react-router-dom";
 import Button from "./Button"
+import { themeType } from './Classes/Theme'
+
 
 const HomePage = () => {
-  const { setThemeColor } = useOutletContext();
-  const { theme } = useOutletContext();
+
+  interface themeI {
+    theme: themeType;
+  }
+
+  const { setThemeColor }: {setThemeColor: (themeVal: number) => {}} = useOutletContext();
+  const { theme }: themeI = useOutletContext<themeI>();
 
   return (
     <>

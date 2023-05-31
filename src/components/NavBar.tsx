@@ -1,10 +1,14 @@
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import Button from "./Button"
-
+import { useSelector } from 'react-redux'
 import homeIcon from './../assets/home-icon.png'
+import cartIcon from './../assets/shopping-cart.png'
 
 const NavBar = ({theme}) => {
+  const cartCount = Object.keys(useSelector(state => state.cart)).length
+
   const navigate = useNavigate();
   
   const handleShowHomePage = () => {
@@ -19,6 +23,9 @@ const NavBar = ({theme}) => {
     navigate('/themes');
   };
 
+  const handleShowCart= () => {
+    navigate('/cart');
+  };
 
   return (
     <>
@@ -32,6 +39,11 @@ const NavBar = ({theme}) => {
                 <Button style={theme.btnColor} label="Product" onClick={handleShowProducts} />
                 <Button style={theme.btnColor} label="Themes" onClick={handleShowThemes} />
             </div>
+
+            <nav id="logoContainer" className="col transparent centerV no-padL navbar-expand-lg navbar-light bg-light">
+                <a id="cartLogo" onClick={handleShowCart} className="col-9">{cartCount}<img id='navLogo' className="text-center no-pad" src={cartIcon} /></a>
+
+            </nav>
         </div>
     </>
   );

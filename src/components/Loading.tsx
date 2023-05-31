@@ -1,3 +1,5 @@
+import React from 'react';
+
 // Display a list of posts
 const Loading = () => {
     return (

@@ -1,6 +1,14 @@
-import { createContext, useState } from 'react'
+import React from 'react';
+import { createContext, useState } from 'react' 
+import { themeType } from './components/Classes/Theme'
 
-export const themes = {
+interface themesObjI {
+  dark: themeType;
+  light: themeType;
+  yellow: themeType;
+}
+
+export const themes: themesObjI = {
   dark: {
     background: '#0c0d10',
     containerColor: '#181b23',
@@ -21,16 +29,21 @@ export const themes = {
   },
 };
 
+interface contextI {
+  theme: themeType;
+  setThemeColor: (themeVal: number) => {} | void; 
+}
+
 // Let our context know what properties to expect
-export const ThemeContext = createContext({
-  theme: {},
-  setThemeColor: (themeVal) => {},
+export const ThemeContext = createContext<contextI>({
+  theme: themes.dark,
+  setThemeColor: (themeVal: number) => {},
 });
 
 export const ThemeProvider = (props) => {
     const [theme, setTheme] = useState(themes.dark);
 
-    const setThemeColor = (themeVal) => {
+    const setThemeColor = (themeVal: number) => {
         var sortedKeys = Object.keys(themes).sort();
 
         if (Object.keys(themes).length >= themeVal) {
